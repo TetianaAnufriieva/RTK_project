@@ -1,31 +1,27 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./ProductsList.module.css";
-import type { AppDispatch } from "../../app/store";
-import { useAppSelector } from "../../app/hooks";
-import {
-  fetchProducts,
-  removeProduct,
-  selectError,
-  selectLoading,
-  selectProducts,
-} from "./productSlice";
+
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { fetchProducts, removeProduct} from "./productSlice";
+import type { RootState } from "../../app/store";
+
+import { addToCart } from "../cart/cartSlice";
 
 export const ProductsList = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const products = useSelector(selectProducts);
-  const loading = useSelector(selectLoading);
-  const error = useAppSelector(selectError);
+  const dispatch = useAppDispatch();
+  const { items, loading, error } = useAppSelector(
+    (state: RootState) => state.products
+  );
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <p className={styles.loading}>Загрузка...</p>;
+  if (loading) return <p className={styles.loading}>Loading...</p>;
   if (error) return <p className={styles.error}>{error}</p>;
 
-  if (!loading && products.length === 0) {
+  if (!loading && items.length === 0) {
     return (
       <div className={styles.empty}>
         <h1>Products Store</h1>
@@ -41,33 +37,39 @@ export const ProductsList = () => {
     <div>
       <h1>Products Store</h1>
       <div className={styles.grid}>
-        {products.map((product) => (
-          <div key={product.id} className={styles.card}>
+        {items.map((item) => (
+          <div key={item.id} className={styles.card}>
             <div className={styles.imageBlock}>
               <div className={styles.topRow}>
-                <span className={styles.category}>{product.category}</span>
+                <span className={styles.category}>{item.category}</span>
 
                 <button
                   className={styles.deleteBtn}
-                  onClick={() => dispatch(removeProduct(product.id))}
+                  onClick={() => dispatch(removeProduct(item.id))}
                 >
                   ❌
                 </button>
               </div>
 
-              <img src={product.image} alt={product.title} />
+              <img src={item.image} alt={item.title} />
             </div>
-            <p className={styles.title}>{product.title}</p>
+            <p className={styles.title}>{item.title}</p>
             <p className={styles.field}>
-              <span>Price:</span> {product.price}
+              <span>Price:</span> {item.price}
             </p>
 
             <div className={styles.rating}>
               <span>Rating:</span>
               <p>
-                {product.rating.rate}, {product.rating.count}
+                {item.rating.rate}, {item.rating.count}
               </p>
             </div>
+            <button
+            className={styles.addBtn}
+            onClick={() => dispatch(addToCart(item))}
+          >
+            Добавить в корзину
+          </button>
           </div>
         ))}
       </div>

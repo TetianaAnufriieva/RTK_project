@@ -1,10 +1,10 @@
-import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 
 export interface Product {
   id: number;
   title: string;
-  price: string;
+  price: number;
   description: string;
   category: string;
   image: string;
@@ -15,41 +15,36 @@ export interface Product {
 }
 
 interface ProductsState {
-  list: Product[];
+  items: Product[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ProductsState = {
-  list: [],
+  items: [],
   loading: false,
   error: null,
 };
 
-export const fetchProducts = createAsyncThunk<
-  Product[],
-  void,
-  { rejectValue: string }
->("products/fetchProducts", async (_, { rejectWithValue }) => {
-  try {
+export const fetchProducts = createAsyncThunk<Product[]>(
+  "products/fetchProducts",
+  async () => {
     const res = await fetch("https://fakestoreapi.com/products");
 
     if (!res.ok) {
-      return rejectWithValue("Ошибка сервера: " + res.status);
+      throw new Error(`HTTP error: ${res.status}`);
     }
 
     return await res.json();
-  } catch (err) {
-    return rejectWithValue("Ошибка сети: " + (err as Error).message);
   }
-});
+);
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    removeProduct(state,action) {
-        state.list = state.list.filter((p) => p.id !== action.payload);
+    removeProduct(state,action: PayloadAction<number>) {
+        state.items = state.items.filter((p) => p.id !== action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -60,15 +55,15 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.list = action.payload;
+        state.items = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload ?? "Неизвестная ошибка";
+        state.error = action.error.message || "Ошибка загрузки продуктов";
       });
   },
 });
-export const selectProducts = (state: RootState) => state.products.list;
+export const selectProducts = (state: RootState) => state.products.items;
 export const selectLoading = (state: RootState) => state.products.loading;
 export const selectError = (state: RootState) => state.products.error;
 

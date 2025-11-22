@@ -3,6 +3,7 @@ import counterReducer from "../features/counter/counterSlice";
 import sandwichReducer from "../features/sandwich/sandwichSlice";
 import usersReducer from "../features/users/userSlice";
 import productsReducer from "../features/products/productSlice"
+import cartReducer from "../features/cart/cartSlice"
 
 
 //→ Импортируем configureStore — простой способ создать store.
@@ -12,6 +13,7 @@ export const store = configureStore({
     sandwich: sandwichReducer,
     users: usersReducer,
     products: productsReducer,
+    cart: cartReducer,
   },
 });
 
