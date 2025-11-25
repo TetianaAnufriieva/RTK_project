@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   gap: 24px;
   padding: 24px;
+  margin-top:40px;
   justify-content: center; /* красиво центрируем */
 }
 

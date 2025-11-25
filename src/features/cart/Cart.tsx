@@ -7,7 +7,7 @@ const Cart = () => {
   const items = useAppSelector((state) => state.cart.items);
 
   if (items.length === 0) {
-    return <h2 className={styles.title}>Корзина пуста</h2>;
+    return <h2 className={styles.title}>The cart is empty</h2>;
   }
 
   const totalPrice = items.reduce(
@@ -17,9 +17,9 @@ const Cart = () => {
 
   return (
     <div className={styles.cartContainer}>
-      <h2 className={styles.title}>Корзина</h2>
+      <h2 className={styles.title}>Cart</h2>
 
-      <h3 className={styles.total}>Итого: ${totalPrice.toFixed(2)}</h3>
+      <h3 className={styles.total}>Total to pay: ${totalPrice.toFixed(2)}</h3>
 
       {items.map((item) => (
         <div key={item.id} className={styles.item}>
@@ -28,17 +28,17 @@ const Cart = () => {
           <div className={styles.info}>
             <h3 className={styles.name}>{item.title}</h3>
             <p className={styles.price}>${item.price}</p>
-            <p className={styles.quantity}>Количество: {item.quantity}</p>
+            <p className={styles.quantity}>Quantity: {item.quantity}</p>
 
             <div className={styles.controls}>
-              <button
+              <button title="Add"
                 className={styles.btn}
                 onClick={() => dispatch(addToCart(item))}
               >
                 +
               </button>
 
-              <button
+              <button title="Remove"
                 className={styles.btn}
                 onClick={() => dispatch(decreaseQuantity(item.id))}
               >
@@ -49,7 +49,7 @@ const Cart = () => {
                 className={`${styles.btn} ${styles.remove}`}
                 onClick={() => dispatch(removeFromCart(item.id))}
               >
-                Удалить
+                Delete
               </button>
             </div>
           </div>

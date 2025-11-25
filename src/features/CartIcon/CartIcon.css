@@ -1,12 +1,14 @@
 .cartIcon {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  position: relative;       /* относительное позиционирование для badge */
+  display: flex;
+  align-items: center;      /* вертикальный центр */
+  justify-content: center;  /* горизонтальный центр */
+  width: 36px;
+  height: 36px;
   background: #111;
   color: white;
-  padding: 12px 16px;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   user-select: none;
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.4);

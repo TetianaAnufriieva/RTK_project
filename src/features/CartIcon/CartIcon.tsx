@@ -1,12 +1,11 @@
 
+import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import "./CartIcon.css";
 
-interface CartIconProps {
-  onClick: () => void;
-}
 
-const CartIcon = ({ onClick }: CartIconProps) => {
+
+const CartIcon = () => {
   const items = useAppSelector((state) => state.cart.items);
 
 // Что в итоге делает строка?
@@ -44,10 +43,10 @@ const CartIcon = ({ onClick }: CartIconProps) => {
   const totalCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="cartIcon" onClick={onClick}>
+     <NavLink to="/cart" className="cartIcon"  title="Add to cart">
       🛒
       {totalCount > 0 && <span className="badge">{totalCount}</span>}
-    </div>
+    </NavLink>
   );
 };
 

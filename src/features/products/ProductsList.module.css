@@ -42,6 +42,10 @@
   background: #e8e8eb;
 }
 
+.addBtn {
+margin-top:20px;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;

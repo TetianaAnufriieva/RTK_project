@@ -1,7 +1,7 @@
 .cartContainer {
   width: 80%;
   margin: 40px auto;
-  color: #5f5c5c;
+  color: white;
 }
 
 .title {
@@ -9,24 +9,25 @@
   font-size: 32px;
   margin-bottom: 40px;
   font-weight: 700;
+  color: black;
 }
 
 .item {
   display: flex;
   gap: 20px;
-  background: #222;
+  background: #585656;
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 25px;
   align-items: center;
-  box-shadow: 0 4px 15px rgb(0 0 0 / 0.4);
+  box-shadow: 0 4px 15px rgba(87, 85, 85, 0.123);
 }
 
 .image {
   width: 140px;
   height: 180px;
   object-fit: contain;
-  background: #333;
+  background: #a09c9c;
   padding: 10px;
   border-radius: 10px;
 }
@@ -78,4 +79,8 @@
 
 .remove:hover {
   background: #900;
+}
+
+.total{
+ color: black;  
 }

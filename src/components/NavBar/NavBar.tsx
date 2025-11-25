@@ -1,43 +1,43 @@
 import { useState, type JSX } from "react";
 import style from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import CartIcon from "../../features/CartIcon/CartIcon";
 
 export default function NavBar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className={style.navigation}>
-      <ul className={`${style.list} ${isOpen ? style.listActive : ""}`}>
-        <li className={style.listElement}>
-          <NavLink to="home" className={style.link}>
-            Home
-          </NavLink>
-        </li>
-        <li className={style.listElement}>
-          <NavLink to="counter" className={style.link}>
-            Counter
-          </NavLink>
-        </li>
-        <li className={style.listElement}>
-          <NavLink to="sandwich" className={style.link}>
-            Sandwich
-          </NavLink>
-        </li>
-        
-        <li className={style.listElement}>
-          <NavLink to="users" className={style.link}>
-            Users
-          </NavLink>
-        </li>
-        <li className={style.listElement}>
-          <NavLink to="products" className={style.link}>
-            Products
-          </NavLink>
-        </li>   
+      {/* Лого слева */}
+      <div className={style.logo}>RTK-App</div>
 
+      {/* Меню по центру */}
+      <ul className={`${style.menu} ${isOpen ? style.menuActive : ""}`}
+      onClick={() => setIsOpen(false)}>
+        <li>
+          <NavLink to="home">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="products">Products</NavLink>
+        </li>
+        <li>
+          <NavLink to="users">Users</NavLink>
+        </li>
+        <li>
+          <NavLink to="sandwich">Sandwich</NavLink>
+        </li>
+        <li>
+          <NavLink to="counter">Counter</NavLink>
+        </li>
       </ul>
+
+      {/* Иконки справа */}
+      <div className={style.icons}>
+        <CartIcon />
+      </div>
+
+      {/* Бургер-меню для мобильных */}
       <div className={style.burgerIcon} onClick={() => setIsOpen(!isOpen)}>
-        {" "}
-        ☰{" "}
+        ☰
       </div>
     </nav>
   );

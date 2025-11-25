@@ -1,0 +1,54 @@
+
+.sandwichContainer {
+  background: lightblue;
+  text-align: center;
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 400px;        /* ограничение ширины на больших экранах */
+  border: 2px solid gray;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sandwichImage {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;          /* перенос кнопок на новые строки */
+  gap: 10px;
+  justify-content: center;
+}
+
+.buttonGroup button {
+  flex: 1 1 45%;            /* адаптивная ширина кнопок */
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buttonGroup button:hover {
+  background-color: #ddd;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+  .sandwichContainer {
+    margin: 10px;
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .buttonGroup button {
+    flex: 1 1 100%;          /* кнопки занимают всю ширину */
+  }
+}

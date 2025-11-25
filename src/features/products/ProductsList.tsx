@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import styles from "./ProductsList.module.css";
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { fetchProducts, removeProduct} from "./productSlice";
+import { fetchProducts, removeProduct } from "./productSlice";
 import type { RootState } from "../../app/store";
 
 import { addToCart } from "../cart/cartSlice";
@@ -25,9 +25,9 @@ export const ProductsList = () => {
     return (
       <div className={styles.empty}>
         <h1>Products Store</h1>
-        <h2>Нет товаров</h2>
+        <h2>No items</h2>
         <button onClick={() => dispatch(fetchProducts())}>
-          Загрузить снова
+          Load again
         </button>
       </div>
     );
@@ -43,9 +43,13 @@ export const ProductsList = () => {
               <div className={styles.topRow}>
                 <span className={styles.category}>{item.category}</span>
 
-                <button
+                <button  title="Delete"
                   className={styles.deleteBtn}
-                  onClick={() => dispatch(removeProduct(item.id))}
+                  onClick={() => {
+                    if (confirm("Do you really want to delete the product?")) {
+                      dispatch(removeProduct(item.id));
+                    }
+                  }}
                 >
                   ❌
                 </button>
@@ -65,11 +69,11 @@ export const ProductsList = () => {
               </p>
             </div>
             <button
-            className={styles.addBtn}
-            onClick={() => dispatch(addToCart(item))}
-          >
-            Добавить в корзину
-          </button>
+              className={styles.addBtn}
+              onClick={() => dispatch(addToCart(item))}
+            >
+              Add to cart
+            </button>
           </div>
         ))}
       </div>

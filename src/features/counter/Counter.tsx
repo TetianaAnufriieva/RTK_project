@@ -10,8 +10,8 @@ export const Counter = () => {
 
   return (
     <div style={{ textAlign: "center", marginTop: "40px" }}>
-      <h1>Счётчик: {value}</h1>
-      <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+      <h1>Counter: {value}</h1>
+      <div style={{ display: "flex", gap: "10px", justifyContent: "center", marginTop:"20px"}}>
         <button onClick={() => dispatch(increment())}>+1</button>
         {/* // → Отправляем действие увеличения счётчика. */}
         <button onClick={() => dispatch(decrement())}>-1</button>

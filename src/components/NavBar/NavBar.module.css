@@ -1,53 +1,71 @@
 .navigation {
+  position: fixed;       /* фиксируем панель при скролле */
+  top: 0;                /* от верхнего края окна */
+  left: 50%;            
+  transform: translateX(-50%); 
+  width: 90%;            
+  max-width: 1260px;   
+   border-radius: 8px;  
   display: flex;
-  justify-content: space-between; /* меню слева, корзина справа */
   align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: #f5f5f5;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
- 
+  padding: 0.7rem 1rem;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  z-index: 1000;        
+    
 }
 
-.list {
+/* Лого слева */
+.logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-right: 2rem;
+}
+
+/* Меню по центру */
+.menu {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   list-style: none;
+  flex: 1;               /* меню занимает оставшееся пространство */
+  justify-content: center; /* центрируем ссылки */
+  margin: 0;
+  transition: all 0.3s ease;
 }
 
-.link {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.2s;
+/* Иконки справа */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+   margin-left: auto; 
 }
 
-.link:hover {
-  color: #007bff;
-}
-
+/* Бургер-иконка для мобильных */
 .burgerIcon {
-  display: none; /* покажем только на мобильных */
+  display: none;
   font-size: 1.5rem;
   cursor: pointer;
+  user-select: none;
+
 }
 
-/* Мобильный адаптив */
+/* Мобильная версия */
 @media (max-width: 768px) {
-  .list {
-    display: none;
+  .menu {
+    display: none;             /* скрыто по умолчанию */
     flex-direction: column;
-    gap: 0;
-    position: absolute;
-    top: 60px;
-    left: 0;
     width: 100%;
     background-color: #f5f5f5;
-    z-index: 10;
     padding: 1rem 0;
+    position: absolute;        /* поверх контента */
+    top: 60px;                 /* под NavBar */
+    left: 0;
+    z-index: 10;
   }
 
-  .listActive {
-    display: flex;
+  .menuActive {
+    display: flex;             /* показываем при открытии */
   }
 
   .burgerIcon {
