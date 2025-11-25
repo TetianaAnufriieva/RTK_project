@@ -84,3 +84,51 @@
 .total{
  color: black;  
 }
+
+/* --- Mobile styles --- */
+@media (max-width: 768px) {
+  .cartContainer {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+  }
+
+  .info {
+    width: 100%;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .quantity {
+    font-size: 15px;
+  }
+
+  .controls {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
