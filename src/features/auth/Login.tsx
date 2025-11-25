@@ -1,0 +1,37 @@
+
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { selectError } from './selectors'
+import { login } from './authSlice'
+import { useState, type FormEvent, type JSX } from 'react'
+
+export default function Login(): JSX.Element {
+	const [username, setUsername] = useState<string>('')
+	const [password, setPassword] = useState<string>('')
+	const error = useAppSelector(selectError)
+	const dispatch = useAppDispatch()
+	function handleLogin(e: FormEvent<HTMLFormElement>): void {
+		e.preventDefault()
+		console.log(dispatch(login({ username, password })))
+	}
+	return (
+		<>
+			<p>Подсказка: emilys, emilyspass</p>
+			<p>{error}</p>
+			<form onSubmit={handleLogin}>
+				<input
+					type="text"
+					placeholder="username"
+					value={username}
+					onChange={e => setUsername(e.target.value)}
+				/>
+				<input
+					type="text"
+					placeholder="password"
+					value={password}
+					onChange={e => setPassword(e.target.value)}
+				/>
+				<button type="submit">Login</button>
+			</form>
+		</>
+	)
+}
