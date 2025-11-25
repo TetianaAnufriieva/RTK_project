@@ -5,6 +5,7 @@ import styles from "./ProductsList.module.css";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchProducts, removeProduct } from "./productSlice";
 import type { RootState } from "../../app/store";
+import { ClipLoader } from "react-spinners";
 
 import { addToCart } from "../cart/cartSlice";
 
@@ -18,7 +19,12 @@ export const ProductsList = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <p className={styles.loading}>Loading...</p>;
+  if (loading)
+  return (
+    <div className={styles.loadingWrapper}>
+      <ClipLoader color="#4facfe" size={50} />
+    </div>
+  );
   if (error) return <p className={styles.error}>{error}</p>;
 
   if (!loading && items.length === 0) {

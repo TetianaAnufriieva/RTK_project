@@ -1,8 +1,8 @@
 .cartIcon {
-  position: relative;       /* относительное позиционирование для badge */
+  position: relative;      
   display: flex;
-  align-items: center;      /* вертикальный центр */
-  justify-content: center;  /* горизонтальный центр */
+  align-items: center;     
+  justify-content: center; 
   width: 36px;
   height: 36px;
   background: #111;

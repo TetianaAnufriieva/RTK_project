@@ -129,11 +129,18 @@ margin-top:20px;
   color: #333;
 }
 
-.loading,
 .error {
   text-align: center;
   margin-top: 50px;
   font-size: 22px;
+}
+
+.loadingWrapper{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;   /* высота блока loader */
+  margin-top: 80px;    /* сдвигаем вниз на высоту NavBar */
 }
 
 @media (max-width: 600px) {

@@ -5,7 +5,7 @@
   gap: 24px;
   padding: 24px;
   margin-top:40px;
-  justify-content: center; /* красиво центрируем */
+  justify-content: center; 
 }
 
 /* Карточка */
@@ -19,7 +19,7 @@
 
   /* Размер карточки на больших экранах (примерно 3–4 в ряд) */
   flex: 1 1 280px;
-  max-width: 320px; /* чтобы не растягивались слишком широко */
+  max-width: 320px; 
 }
 
 .card:hover {
@@ -27,7 +27,6 @@
   box-shadow: 0 6px 14px rgb(0 0 0 / 0.15);
 }
 
-/* Мобильные устройства */
 @media (max-width: 600px) {
   .grid {
     padding: 16px;
@@ -67,8 +66,11 @@
   font-weight: 600;
 }
 
-.loading {
-  text-align: center;
-  font-size: 22px;
-  margin-top: 40px;
+
+.loadingWrapper{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;  
+  margin-top: 80px;    
 }

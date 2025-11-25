@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ClipLoader } from "react-spinners";
 
 
 import styles from "./UsersList.module.css";
@@ -36,7 +37,12 @@ export const UsersList = () => {
 
   
 
-  if (loading) return <p className={styles.loading}>Загрузка...</p>;
+   if (loading)
+  return (
+    <div className={styles.loadingWrapper}>
+      <ClipLoader color="#4facfe" size={50} />
+    </div>
+  );
   if (error) return <p className={styles.error}>{error}</p>;
 
    return (

@@ -4,7 +4,7 @@
   text-align: center;
   margin: 40px auto;
   padding: 20px;
-  max-width: 400px;        /* ограничение ширины на больших экранах */
+  max-width: 400px;        
   border: 2px solid gray;
   border-radius: 10px;
   box-sizing: border-box;
@@ -22,13 +22,13 @@
 
 .buttonGroup {
   display: flex;
-  flex-wrap: wrap;          /* перенос кнопок на новые строки */
+  flex-wrap: wrap;         
   gap: 10px;
   justify-content: center;
 }
 
 .buttonGroup button {
-  flex: 1 1 45%;            /* адаптивная ширина кнопок */
+  flex: 1 1 45%;           
   padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -49,6 +49,6 @@
   }
 
   .buttonGroup button {
-    flex: 1 1 100%;          /* кнопки занимают всю ширину */
+    flex: 1 1 100%;         
   }
 }
