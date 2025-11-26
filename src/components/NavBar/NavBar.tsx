@@ -2,6 +2,7 @@ import { useState, type JSX } from "react";
 import style from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import CartIcon from "../../features/CartIcon/CartIcon";
+import LoginIcon from "@mui/icons-material/Login";
 import { useAppSelector } from "../../app/hooks";
 import { selectUser } from "../../features/auth/selectors";
 
@@ -12,14 +13,13 @@ export default function NavBar(): JSX.Element {
     <nav className={style.navigation}>
       {/* Лого слева */}
       <div className={style.logo}>RTK-App</div>
-
-      {/* Меню по центру */}
-      <ul
-        className={`${style.menu} ${isOpen ? style.menuActive : ""}`}
-        onClick={() => setIsOpen(false)}
-      >
-        {user?.username ? (
-          <>
+      {user?.username ? (
+        <>
+          {/* Меню по центру */}
+          <ul
+            className={`${style.menu} ${isOpen ? style.menuActive : ""}`}
+            onClick={() => setIsOpen(false)}
+          >
             <li>
               <NavLink to="home">Home</NavLink>
             </li>
@@ -35,20 +35,23 @@ export default function NavBar(): JSX.Element {
             <li>
               <NavLink to="counter">Counter</NavLink>
             </li>
-          </>
-        ) : (
-          <li>
-            <NavLink to="login">Login</NavLink>
-          </li>
-        )}
-      </ul>
+          </ul>
 
-      {/* Иконки справа */}
-      <div className={style.icons}>
-        <CartIcon />
-      </div>
+          {/* Иконки справа */}
+          <div className={style.icons}>
+            <CartIcon />
+          </div>
+        </>
+      ) : (
+        // Если не авторизован, показываем только Login
+        <div className={style.icons}>
+          <NavLink to="login" className={style.login} title="Login">
+            <LoginIcon />
+          </NavLink>
+        </div>
+      )}
 
-      {/* Бургер-меню для мобильных */}
+      {/* Бургер-меню */}
       <div className={style.burgerIcon} onClick={() => setIsOpen(!isOpen)}>
         ☰
       </div>
