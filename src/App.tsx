@@ -10,7 +10,7 @@ import LayOut from "./components/LayOut/LayOut";
 import Cart from "./features/cart/Cart";
 import Login from "./features/auth/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import { Weather } from "./features/weather/weather";
+import { Weather } from "./features/weather/Weather";
 
 function App() {
   return (
