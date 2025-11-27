@@ -35,6 +35,9 @@ export default function NavBar(): JSX.Element {
             <li>
               <NavLink to="counter">Counter</NavLink>
             </li>
+            <li>
+              <NavLink to="weather">Weather</NavLink>
+            </li>
           </ul>
 
           {/* Иконки справа */}

@@ -5,6 +5,7 @@ import usersReducer from "../features/users/userSlice";
 import productsReducer from "../features/products/productSlice";
 import cartReducer from "../features/cart/cartSlice";
 import authReducer from "../features/auth/authSlice";
+import weatherReducer from "../features/weather/weatherSlice";
 
 //→ Импортируем configureStore — простой способ создать store.
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
     products: productsReducer,
     cart: cartReducer,
     auth: authReducer,
+    weather: weatherReducer,
   },
 });
 
