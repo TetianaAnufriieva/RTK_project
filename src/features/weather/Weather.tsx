@@ -16,14 +16,15 @@ export const Weather = () => {
     error,
   } = useAppSelector((state: RootState) => state.weather);
 
-  const getTemperatureColor = (temp: number): string => {
-    if (temp < -10) return "text-blue-300";
-    if (temp < 0) return "text-blue-400";
-    if (temp < 10) return "text-blue-500";
-    if (temp < 20) return "text-yellow-500";
-    if (temp < 30) return "text-orange-500";
-    return "text-red-500";
-  };
+  // const getTemperatureColor = (temp: number): string => {
+  //   if (temp < -10) return "text-blue-300";
+  //   if (temp < 0) return "text-blue-400";
+  //   if (temp < 10) return "text-blue-500";
+  //   if (temp < 20) return "text-yellow-500";
+  //   if (temp < 30) return "text-orange-500";
+  //   return "text-red-500";
+  // };
+  
 
   const handleSearch = () => {
     if (city.trim() === "") return;
