@@ -59,13 +59,16 @@ export const Weather = () => {
             {weather.name}, {weather.sys.country}
           </h2>
 
-          <div
-            className={`${styles.temperature} ${getTemperatureColor(
+          <div className={styles.temperature}>{weather.main.temp}°C</div>
+
+          {/* <div
+            className={`text-4xl font-bold my-2 ${getTemperatureColor(
               weather.main.temp
             )}`}
           >
             {weather.main.temp}°C
-          </div>
+          </div> */}
+
           <div className={styles.feels_like}>
             FEELS LIKE: {weather.main.feels_like}°C
           </div>
