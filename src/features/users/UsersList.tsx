@@ -1,53 +1,22 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
-
-
 import styles from "./UsersList.module.css";
-import type { AppDispatch } from "../../app/store";
-import { fetchUsers, selectError, selectLoading, selectUsers } from "./userSlice";
-import { useAppSelector } from "../../app/hooks";
-
+import { useGetUsersQuery } from "./usersApi";
 
 export const UsersList = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const users = useSelector(selectUsers);
-  const loading = useSelector(selectLoading);
-  const error = useAppSelector(selectError);
+  const { data: users, error, isFetching } = useGetUsersQuery();
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
-// Тогда почему React  не знает что dispatch — это стабильная функция
-//   и она не пересоздаётся и не меняется между рендерами. ?
+  if (isFetching)
+    return (
+      <div className={styles.loadingWrapper}>
+        <ClipLoader color="#4facfe" size={50} />
+      </div>
+    );
 
-// Потому что React не знает, что:
+  if (error) return <p className={styles.error}>Loading error</p>;
 
-// мы используем Redux
-
-// dispatch — стабилен
-
-// он не изменится
-
-// React-хуки устроены универсально и говорят:
-
-// “Ты используешь переменную в эффекте?
-// Значит, добавь её в массив зависимостей”.
-
-
-  
-
-   if (loading)
   return (
-    <div className={styles.loadingWrapper}>
-      <ClipLoader color="#4facfe" size={50} />
-    </div>
-  );
-  if (error) return <p className={styles.error}>{error}</p>;
-
-   return (
     <div className={styles.grid}>
-      {users.map((user) => (
+      {users?.map((user) => (
         <div key={user.id} className={styles.card}>
           <h2 className={styles.name}>
             {user.name.firstname} {user.name.lastname}
