@@ -11,6 +11,7 @@ import Cart from "./features/cart/Cart";
 import Login from "./features/auth/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { Weather } from "./features/weather/Weather";
+import ApodRandom from "./features/apod/ApodRandom";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="users" element={<ProtectedRoute outlet={<UsersList />}/>} />
         <Route path="products" element={<ProtectedRoute outlet={<ProductsList />} />}/>
         <Route path="weather" element={<ProtectedRoute outlet={<Weather />} />}/>
+        <Route path="apod" element={<ProtectedRoute outlet={<ApodRandom />} />}/>
         <Route path="/cart" element={<ProtectedRoute outlet={<Cart />}  />}/>
         <Route path="login" element={<Login />} />
         <Route path="*" element={<NotFound />} />

@@ -38,6 +38,9 @@ export default function NavBar(): JSX.Element {
             <li>
               <NavLink to="weather">Weather</NavLink>
             </li>
+            <li>
+              <NavLink to="apod">Apod</NavLink>
+            </li>
           </ul>
 
           {/* Иконки справа */}
@@ -49,7 +52,7 @@ export default function NavBar(): JSX.Element {
         // Если не авторизован, показываем только Login
         <div className={style.icons}>
           <NavLink to="login" className={style.login} title="Login">
-            <LoginIcon />
+            <LoginIcon /> 
           </NavLink>
         </div>
       )}
