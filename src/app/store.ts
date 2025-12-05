@@ -9,6 +9,8 @@ import productsReducer from "../features/products/productSlice";
 import cartReducer from "../features/cart/cartSlice";
 import authReducer from "../features/auth/authSlice";
 import apodReducer from "../features/apod/apodSlice";
+import usersReducer from "../features/users/userSlice";
+import weatherReducer from "../features/weather/weatherSlice";
 
 // Импорты RTK Query
 import { usersApi } from "../features/users/usersApi";
@@ -23,6 +25,8 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   auth: authReducer,
   apod: apodReducer,
+  users: usersReducer,        
+  weather: weatherReducer,
   // RTK Query reducers
   [usersApi.reducerPath]: usersApi.reducer,
   [weatherApi.reducerPath]: weatherApi.reducer,
