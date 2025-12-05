@@ -12,6 +12,7 @@ import Login from "./features/auth/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { Weather } from "./features/weather/Weather";
 import ApodRandom from "./features/apod/ApodRandom";
+import { Dictionary } from "./features/dictionary/Dictionary";
 
 function App() {
   return (
@@ -19,13 +20,35 @@ function App() {
       <Route path="/" element={<LayOut />}>
         <Route index element={<Home />} />
         <Route path="home" element={<ProtectedRoute outlet={<Home />} />} />
-        <Route path="counter" element={<ProtectedRoute outlet={<Counter />}  />}/>
-        <Route path="sandwich" element={<ProtectedRoute outlet={<Sandwich />} />} />
-        <Route path="users" element={<ProtectedRoute outlet={<UsersList />}/>} />
-        <Route path="products" element={<ProtectedRoute outlet={<ProductsList />} />}/>
-        <Route path="weather" element={<ProtectedRoute outlet={<Weather />} />}/>
-        <Route path="apod" element={<ProtectedRoute outlet={<ApodRandom />} />}/>
-        <Route path="/cart" element={<ProtectedRoute outlet={<Cart />}  />}/>
+        <Route
+          path="counter"
+          element={<ProtectedRoute outlet={<Counter />} />}
+        />
+        <Route
+          path="sandwich"
+          element={<ProtectedRoute outlet={<Sandwich />} />}
+        />
+        <Route
+          path="users"
+          element={<ProtectedRoute outlet={<UsersList />} />}
+        />
+        <Route
+          path="products"
+          element={<ProtectedRoute outlet={<ProductsList />} />}
+        />
+        <Route
+          path="weather"
+          element={<ProtectedRoute outlet={<Weather />} />}
+        />
+        <Route
+          path="dictionary"
+          element={<ProtectedRoute outlet={<Dictionary />} />}
+        />
+        <Route
+          path="apod"
+          element={<ProtectedRoute outlet={<ApodRandom />} />}
+        />
+        <Route path="/cart" element={<ProtectedRoute outlet={<Cart />} />} />
         <Route path="login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Route>
