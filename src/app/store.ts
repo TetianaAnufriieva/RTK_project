@@ -11,11 +11,13 @@ import authReducer from "../features/auth/authSlice";
 import apodReducer from "../features/apod/apodSlice";
 import usersReducer from "../features/users/userSlice";
 import weatherReducer from "../features/weather/weatherSlice";
+import timerReducer from "../features/christmas/timerSlice";
 
 // Импорты RTK Query
 import { usersApi } from "../features/users/usersApi";
 import { weatherApi } from "../features/weather/weatherApi";
 import { dictionaryApi } from "../features/dictionary/dictionaryApi";
+import { christmasApi } from "../features/christmas/christmasApi";
 
 // Объединяем все редьюсеры
 const rootReducer = combineReducers({
@@ -25,12 +27,15 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   auth: authReducer,
   apod: apodReducer,
-  users: usersReducer,        
+  users: usersReducer,
   weather: weatherReducer,
+  timer: timerReducer,
+
   // RTK Query reducers
   [usersApi.reducerPath]: usersApi.reducer,
   [weatherApi.reducerPath]: weatherApi.reducer,
   [dictionaryApi.reducerPath]: dictionaryApi.reducer,
+  [christmasApi.reducerPath]: christmasApi.reducer,
 });
 
 // Настройка persist
@@ -84,7 +89,8 @@ export const store = configureStore({
     }).concat(
       usersApi.middleware,
       weatherApi.middleware,
-      dictionaryApi.middleware
+      dictionaryApi.middleware,
+      christmasApi.middleware
     ),
 });
 

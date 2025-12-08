@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { Weather } from "./features/weather/Weather";
 import ApodRandom from "./features/apod/ApodRandom";
 import { Dictionary } from "./features/dictionary/Dictionary";
+import { Countdown } from "./features/christmas/Countdown";
 
 function App() {
   return (
@@ -47,6 +48,10 @@ function App() {
         <Route
           path="apod"
           element={<ProtectedRoute outlet={<ApodRandom />} />}
+        />
+        <Route
+          path="countdown"
+          element={<ProtectedRoute outlet={<Countdown />} />}
         />
         <Route path="/cart" element={<ProtectedRoute outlet={<Cart />} />} />
         <Route path="login" element={<Login />} />

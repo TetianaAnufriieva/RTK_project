@@ -44,6 +44,9 @@ export default function NavBar(): JSX.Element {
             <li>
               <NavLink to="dictionary">Dictionary</NavLink>
             </li>
+            <li>
+              <NavLink to="countdown">Countdown</NavLink>
+            </li>
           </ul>
 
           {/* Иконки справа */}

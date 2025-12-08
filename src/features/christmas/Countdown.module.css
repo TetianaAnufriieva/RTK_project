@@ -1,0 +1,23 @@
+.countdown_wrapper {
+  font-family: "Arial", sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: bold;
+
+  border-radius: 12px;
+  padding: 20px;
+
+  border: 2px solid #dce9f7;
+
+  background: url("https://st4.depositphotos.com/10504788/27847/i/450/depositphotos_278479914-stock-photo-seamless-background-fir-branches.jpg");
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+}
+
+/* Подсвечиваем цифры */
+.countdown_wrapper span {
+  color: #d22d2d;        
+}
